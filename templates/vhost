@@ -1,0 +1,24 @@
+<VirtualHost *:80>
+
+ServerName <%= options[:domain] %>
+
+DocumentRoot /srv/wordpress
+DirectoryIndex index.php
+
+<%= options[:vhost_extra] %>
+
+ErrorLog        /var/log/apache2/<%= options[:domain] %>-error.log
+CustomLog       /var/log/apache2/<%= options[:domain] %>-access.log combined
+
+<Directory /srv/wordpress>
+AddHandler fcgid-script .php
+FCGIWrapper /usr/lib/cgi-bin/php5 .php
+Options +ExecCGI 
+
+AllowOverride All
+Order Allow,Deny
+allow from all
+</Directory>
+LogLevel <%= options[:log_level] || 'warn' %>
+
+</VirtualHost>
