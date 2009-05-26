@@ -14,6 +14,9 @@
  * @package WordPress
  */
 
+/* Since wordpress doesn't use relative links, this sets the  */
+define('WP_SITEURL', 'http://blog.srogers.railsmachina.com');
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', '<%= options[:db][:name] %>');
@@ -64,6 +67,8 @@ $table_prefix  = '<%= options[:table_prefix] || 'wp_' %>';
  * language support.
  */
 define ('WPLANG', '<%= options[:wplang] %>');
+
+<%= options[:extra] %>
 
 /* That's all, stop editing! Happy blogging. */
 
