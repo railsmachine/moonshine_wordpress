@@ -14,9 +14,6 @@
  * @package WordPress
  */
 
-/* Since wordpress doesn't use relative links, this sets the  */
-define('WP_SITEURL', 'http://blog.srogers.railsmachina.com');
-
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', '<%= options[:db][:name] %>');
