@@ -17,8 +17,10 @@ module Wordpress
         :name       => 'wordpress',
         :username   => 'wordpress',
         :password   => "t1me_2_bl@hg"
-      }.merge!( hash.delete(:db) || {})
-    }.merge! hash
+      }
+    }
+    options = HashWithIndifferentAccess.new(options.merge!(configuration[:wordpress]))
+    options[:db] = HashWithIndifferentAccess.new(options[:db].merge!(configuration[:wordpress][:db]))
 
     %w(wget libapache2-mod-fcgid).each{|p| package p, :ensure => :installed}
     %w(php5 php5-mysql php5-gd php5-cgi php5-cli).each{|p| package p, :ensure => :installed, :require => package('libapache2-mod-fcgid')}
