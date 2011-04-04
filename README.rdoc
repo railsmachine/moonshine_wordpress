@@ -21,7 +21,10 @@ To generate values for the secret keys below, click here[https://api.wordpress.o
           :secure_auth_key => 'SOME_UNIQUE_VALUE',
           :logged_in_key   => 'SOME_UNIQUE_VALUE',
           :nonce_key       => 'SOME_UNIQUE_VALUE',
-          :db => {:password => 'sekrit_db_password'}
+          :db => {
+            :password => 'sekrit_db_password'
+            :cache => true # fast caching
+            }
         }
       )
 * Include the plugin and recipe(s) in your Moonshine manifest
