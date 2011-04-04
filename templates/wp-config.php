@@ -35,7 +35,7 @@ define('DB_COLLATE', '<%= options[:db][:collate] %>');
 
 /** Super Fast Caching. */
 
-define('WP_CACHE', '<%= options[:cache] %>');
+define('WP_CACHE', '<%= options[:db][:cache] %>');
 
 /**#@+
  * Authentication Unique Keys.

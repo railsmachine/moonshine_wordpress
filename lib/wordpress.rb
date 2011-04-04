@@ -12,11 +12,11 @@ module Wordpress
   def wordpress(hash = {})
     options = {
       :domain => `hostname`.chomp,
-      :cache => false,
       :db => {
         :name       => 'wordpress',
         :username   => 'wordpress',
-        :password   => "t1me_2_bl@hg"
+        :password   => "t1me_2_bl@hg",
+        :cache      => false
       }
     }
     options = HashWithIndifferentAccess.new(options.merge!(configuration[:wordpress]))
