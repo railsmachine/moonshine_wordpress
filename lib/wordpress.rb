@@ -11,7 +11,7 @@ module Wordpress
   #  recipe :wordpress
   def wordpress(hash = {})
     options = {
-      :domain => `hostname`,
+      :domain => `hostname`.chomp,
       :cache => false,
       :db => {
         :name       => 'wordpress',
