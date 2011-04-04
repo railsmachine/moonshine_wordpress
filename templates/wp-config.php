@@ -33,6 +33,10 @@ define('DB_CHARSET', '<%= options[:db][:charset] || 'UTF8' %>');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '<%= options[:db][:collate] %>');
 
+/** Super Fast Caching. */
+
+define('WP_CACHE', '<%= options[:cache] %>');
+
 /**#@+
  * Authentication Unique Keys.
  *

@@ -12,6 +12,7 @@ module Wordpress
   def wordpress(hash = {})
     options = {
       :domain => `hostname`,
+      :cache => false,
       :db => {
         :name       => 'wordpress',
         :username   => 'wordpress',
