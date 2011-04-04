@@ -19,7 +19,7 @@ module Wordpress
         :cache      => false
       }
     }
-    options = HashWithIndifferentAccess.new(options.merge!(configuration[:wordpress]))
+    options      = HashWithIndifferentAccess.new(options.merge!(configuration[:wordpress]))
     options[:db] = HashWithIndifferentAccess.new(options[:db].merge!(configuration[:wordpress][:db]))
 
     %w(wget libapache2-mod-fcgid).each{|p| package p, :ensure => :installed}
