@@ -13,21 +13,20 @@ To generate values for the secret keys below, click here[https://api.wordpress.o
 === Instructions
 
 * <tt>script/plugin install git://github.com/railsmachine/moonshine_wordpress.git</tt>
-* Configure settings if needed. Although it's not required, you should set these values at least:
-    configure(
-        :wordpress => {
-          :domain          => 'blog.yourdomain.com',
-          :auth_key        => 'SOME_UNIQUE_VALUE',
-          :secure_auth_key => 'SOME_UNIQUE_VALUE',
-          :logged_in_key   => 'SOME_UNIQUE_VALUE',
-          :nonce_key       => 'SOME_UNIQUE_VALUE',
-          :db => {
-            :password => 'sekrit_db_password'
-            :cache => true # fast caching
-            }
-        }
-      )
+
+* Configure settings as needed. At the very least for a secure wordpress install, you should set these settings in config/moonshine.yml or config/moonshine/{rails_env}.yml:
+
+    :wordpress:
+      :domain: blog.yourdomain.com
+      :auth_key: SOME_UNIQUE_VALUE
+      :secure_auth_key: SOME_UNIQUE_VALUE
+      :logged_in_key: SOME_UNIQUE_VALUE
+      :nonce_key: SOME_UNIQUE_VALUE
+      :db:
+        :password: sekrit_db_password
+        :cache: true
+    
 * Include the plugin and recipe(s) in your Moonshine manifest
-    plugin :wordpress
     recipe :wordpress
+
 * After deploying, go to http://blog.yourdomain.com/wp-admin/install.php
