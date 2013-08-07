@@ -11,16 +11,16 @@ module Wordpress
   #  recipe :wordpress
   def wordpress(hash = {})
     options = {
-      :domain => `hostname`.chomp,
-      :db => {
-        :name       => 'wordpress',
-        :username   => 'wordpress',
-        :password   => "t1me_2_bl@hg",
-        :cache      => false
-      }
+      :domain => `hostname`.chomp
+    }
+    db_options = {
+      :name       => 'wordpress',
+      :username   => 'wordpress',
+      :password   => "t1me_2_bl@hg",
+      :cache      => false
     }
     options      = HashWithIndifferentAccess.new(options.merge!(configuration[:wordpress]))
-    options[:db] = HashWithIndifferentAccess.new(options[:db].merge!(configuration[:wordpress][:db]))
+    options[:db] = HashWithIndifferentAccess.new(db_options.merge!(configuration[:wordpress][:db]))
 
     %w(wget libapache2-mod-fcgid).each{|p| package p, :ensure => :installed}
     %w(php5 php5-mysql php5-gd php5-cgi php5-cli).each{|p| package p, :ensure => :installed, :require => package('libapache2-mod-fcgid')}
